@@ -11,13 +11,13 @@ def sendEcho = { msg ->
 
 def registerEchoSender = { sock ->
     eb.registerHandler(sendEchoAddress) { msg ->
-        sock.write(msg.body())
+        sock.write("${msg.body()}\n")
     }
 }
 
 vertx.createNetServer().connectHandler { sock ->
     registerEchoSender(sock)
     sock.dataHandler { buffer ->
-        sendEcho buffer
+        eb.send('search-command', buffer)
     }
 }.listen(port)

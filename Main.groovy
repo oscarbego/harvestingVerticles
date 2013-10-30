@@ -3,7 +3,8 @@ log.info "Inicia el verticle main"
 
 def verticlesFileNames = [
 	'VerticleManager.groovy',
-	'DeployCommand.groovy'
+	'ExecuteCommand.groovy',
+	'DeployCommand.groovy',
 ]
 
 verticlesFileNames.each { vfn ->
